@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Use Faker to generate data for seeds and tests
+  gem 'faker', '~> 2.15', '>= 2.15.1'
 end
 
 group :development do
