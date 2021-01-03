@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+30.times do
+  post = Post.create(
+    title: Faker::Lorem.sentence,
+    description: Faker::Lorem.sentence(word_count: 50)
+  )
+  post.image.attach(
+    io: File.open('storage/seed/sample-image.png'),
+    filename: 'sample-image.png',
+    content_type: 'image/png'
+  )
+  post.save
+end
