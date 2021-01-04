@@ -16,14 +16,14 @@ const Posts = () => {
 
   useEffect(() => {
     axios.get('/api/v1/posts.json')
-      .then(response => {
+      .then((response) => {
         setPosts(response.data.data);
         setLoading(false);
       })
-      .catch(error => console.log(error) )
+      .catch((error) => console.log(error));
   }, [posts.length]);
 
-  const renderPosts = () => posts.map(post => <Post key={post.attributes.title} post={post} /> )
+  const renderPosts = () => posts.map((post) => <Post key={post.attributes.title} post={post} />);
 
   if (loading) {
     return <Container maxWidth="sm"><CircularProgress /></Container>;
