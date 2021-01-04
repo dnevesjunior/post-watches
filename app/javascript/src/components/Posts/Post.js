@@ -43,7 +43,7 @@ const Post = ({ post }) => {
         </div>
       </Card>
     </Grid>
-  )
+  );
 };
 
 Post.propTypes = {

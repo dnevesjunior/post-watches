@@ -8,8 +8,6 @@ import {
   CardContent,
   Typography,
   CardMedia,
-  CardActions,
-  Button,
 } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -27,7 +25,12 @@ const useStyles = makeStyles({
 
 const Article = ({ item }) => {
   const classes = useStyles();
-  const { author, title, description, url, urlToImage, publishedAt } = item;
+  const {
+    title,
+    description,
+    url,
+    urlToImage,
+  } = item;
 
   return (
     <Grid item xs={6} md={3}>
@@ -49,11 +52,11 @@ const Article = ({ item }) => {
         </CardActionArea>
       </Card>
     </Grid>
-  )
-}
+  );
+};
 
 Article.propTypes = {
-  item: PropTypes.instanceOf(Object),
+  item: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Article;

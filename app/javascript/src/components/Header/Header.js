@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
-  }
+  },
 }));
 
-const Header = (props) => {
+const Header = () => {
   const classes = useStyles();
 
   return (
@@ -59,6 +59,6 @@ const Header = (props) => {
       </Toolbar>
     </div>
   );
-}
+};
 
 export default Header;

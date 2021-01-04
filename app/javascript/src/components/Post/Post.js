@@ -12,18 +12,18 @@ const Post = ({ match }) => {
 
   useEffect(() => {
     const { slug } = match.params;
-    axios.get(`/api/v1/posts/${ slug }`)
-      .then(response => {
-        setPost(response.data.data)
+    axios.get(`/api/v1/posts/${slug}`)
+      .then((response) => {
+        setPost(response.data.data);
         setLoading(false);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }, []);
 
-  const renderPost = () => <div>{post.title}</div>
-  
+  const renderPost = () => <div>{post.title}</div>;
+
   if (loading) {
-    return <CircularProgress />
+    return <CircularProgress />;
   }
 
   return (

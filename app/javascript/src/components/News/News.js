@@ -17,22 +17,22 @@ const News = () => {
   const [page, setPage] = useState(1);
 
   // move this apiKey to env var using dotenv later on
-  const apiKey = 'cbd83f17a9e44c17a58e430fa76f6510'
+  const apiKey = 'cbd83f17a9e44c17a58e430fa76f6510';
 
   useEffect(() => {
     axios.get(`https://newsapi.org/v2/everything?apiKey=${apiKey}&q=watches&page=${page}`)
-      .then(response => {
+      .then((response) => {
         console.log(response);
         setNews(...news, response.data.articles);
         setLoading(false);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }, []);
 
-  const renderNews = () => news.map(item => <Article key={item.url} item={item} />);
+  const renderNews = () => news.map((item) => <Article key={item.url} item={item} />);
 
   if (loading) {
-    return <Container maxWidth="sm"><CircularProgress /></Container>
+    return <Container maxWidth="sm"><CircularProgress /></Container>;
   }
 
   return (
