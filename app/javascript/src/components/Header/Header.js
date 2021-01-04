@@ -1,25 +1,26 @@
 import React from 'react';
 import {
   makeStyles,
-  AppBar,
   Toolbar,
-  Typography,
-  Button,
-  IconButton,
+  Link,
 } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     marginBottom: 30,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
   },
+  toolbar: {
+    justifyContent: 'space-between',
+    overflowX: 'auto',
+  },
+  toolbarLink: {
+    padding: theme.spacing(1),
+    flexShrink: 0,
+  }
 }));
 
 const Header = (props) => {
@@ -27,17 +28,35 @@ const Header = (props) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <Menu />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+      <Toolbar component="nav" variant="dense" className="classes.toolbar">
+        <Link
+          color="inherit"
+          noWrap
+          variant="body2"
+          href="/"
+          className={classes.toolbarLink}
+        >
+          Posts
+        </Link>
+        <Link
+          color="inherit"
+          noWrap
+          variant="body2"
+          href="/news"
+          className={classes.toolbarLink}
+        >
+          External News
+        </Link>
+        <Link
+          color="inherit"
+          noWrap
+          variant="body2"
+          href="/admin"
+          className={classes.toolbarLink}
+        >
+          Admin
+        </Link>
+      </Toolbar>
     </div>
   );
 }
