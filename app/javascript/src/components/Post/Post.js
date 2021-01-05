@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import {
   Container,
@@ -20,8 +21,6 @@ const Post = ({ match }) => {
       .catch((error) => console.log(error));
   }, []);
 
-  const renderPost = () => <div>{post.title}</div>;
-
   if (loading) {
     return <CircularProgress />;
   }
@@ -36,6 +35,10 @@ const Post = ({ match }) => {
       </Typography>
     </Container>
   );
+};
+
+Post.propTypes = {
+  match: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Post;

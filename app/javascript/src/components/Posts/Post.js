@@ -47,7 +47,7 @@ const Post = ({ post }) => {
 };
 
 Post.propTypes = {
-  post: PropTypes.instanceOf(Object),
+  post: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Post;

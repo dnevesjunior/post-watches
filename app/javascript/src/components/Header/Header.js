@@ -56,6 +56,24 @@ const Header = () => {
         >
           Admin
         </Link>
+        <Link
+          color="inherit"
+          noWrap
+          variant="body2"
+          href="/login"
+          className={classes.toolbarLink}
+        >
+          Login
+        </Link>
+        <Link
+          color="inherit"
+          noWrap
+          variant="body2"
+          href="/signup"
+          className={classes.toolbarLink}
+        >
+          Signup
+        </Link>
       </Toolbar>
     </div>
   );
