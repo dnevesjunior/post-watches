@@ -11,6 +11,7 @@ import Posts from './Posts/Posts';
 import Post from './Post/Post';
 import News from './News/News';
 import Login from './Login/Login';
+import Signup from './Signup/Signup';
 import ProtectedRoute from './Routes/ProtectedRoute';
 
 const App = () => (
@@ -21,6 +22,7 @@ const App = () => (
       <Route exact path="/posts/:slug" component={Post} />
       <Route exact path="/news" component={News} />
       <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
       <ProtectedRoute exact path="/admin" component={News} />
     </Switch>
   </AuthProvider>
