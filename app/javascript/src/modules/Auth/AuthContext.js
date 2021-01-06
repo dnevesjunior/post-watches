@@ -1,12 +1,10 @@
 import React, { Component, createContext } from 'react';
 import axios from 'axios';
 
-const AuthContext = createContext();
+import AuthCheck from '../../utils/AuthCheck';
+import TokenHelper from '../../utils/TokenHelper';
 
-const tokenHelper = () => {
-  const csrfToken = document.querySelector('[name=csrf-token]').content;
-  axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
-}
+const AuthContext = createContext();
 
 class AuthProvider extends Component {
   constructor(props) {
@@ -19,21 +17,15 @@ class AuthProvider extends Component {
   }
 
   async componentDidMount() {
-    await axios.get('/api/v1/auth/me', { withCredentials: true })
-      .then((response) => {
-        const { logged_in, email } = response.data;
-        this.setState({
-          authenticated: logged_in,
-          email,
-        })
-      })
-      .catch(error => console.log(error));
+    AuthCheck()
+      .then((response) => this.setState({ ...response }))
+      .catch((error) => console.log(error));
   }
 
   login = (user, props, e) => {
     e.preventDefault();
 
-    tokenHelper();
+    TokenHelper();
     axios.post('/api/v1/auth', { user: { ...user } }, { withCredentials: true })
       .then(() => {
         this.setState({ authenticated: true });
@@ -45,7 +37,7 @@ class AuthProvider extends Component {
   signup = (user, props, e) => {
     e.preventDefault();
 
-    tokenHelper();
+    TokenHelper();
     axios.post('/api/v1/registrations', { user: { ...user } }, { withCredentials: true })
       .then(() => {
         this.setState({ authenticated: true });
@@ -57,7 +49,7 @@ class AuthProvider extends Component {
   logout = (e) => {
     e.preventDefault();
 
-    tokenHelper();
+    TokenHelper();
     axios.delete('/api/v1/auth/logout')
       .then(() => {
         this.setState({ authenticated: false })

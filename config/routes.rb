@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :posts, param: :slug
       resources :auth, only: [:create] do
         collection do
-          get 'logged_in', to: 'auth#logged_in'
+          get 'me', to: 'auth#logged_in'
           delete 'logout', to: 'auth#logout'
         end
       end
