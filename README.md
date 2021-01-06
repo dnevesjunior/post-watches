@@ -1,24 +1,25 @@
-# README
+# Post Watches
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project with Ruby on Rails / React to show posts and an external API with news related to watches
 
-Things you may want to cover:
+The project was accompanied by a Trello table, which includes details on tasks and PRs related to each one. You can have a look [here](https://trello.com/b/uZ5NzqaO/postwatches)
 
-* Ruby version
+## Development
 
-* System dependencies
+### Local environment
 
-* Configuration
+You can run the application by following these steps:
 
-* Database creation
+You will need Ruby 2.7 and PostgreSQL installed
 
-* Database initialization
+1. Install bundler: `gem install bundler`
 
-* How to run the test suite
+2. Install remaining dependencies: `bundle install`
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Run `bundle exec rails db:setup` to create the database and seed it on development
 
-* Deployment instructions
+4. Run `yarn` to install javascript dependencies
 
-* ...
+5. Run `bundle exec rails server` to start the server
+
+You can change database settings on `/config/database.yml`
