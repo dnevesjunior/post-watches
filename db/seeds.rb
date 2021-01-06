@@ -11,10 +11,5 @@
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.sentence(word_count: 50)
   )
-  post.image.attach(
-    io: File.open('storage/seed/sample-image.png'),
-    filename: 'sample-image.png',
-    content_type: 'image/png'
-  )
   post.save
 end
