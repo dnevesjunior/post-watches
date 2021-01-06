@@ -3,7 +3,10 @@ import {
   makeStyles,
   Toolbar,
   Link,
+  Button,
 } from '@material-ui/core';
+
+import { AuthConsumer } from '../../modules/Auth/AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,55 +30,75 @@ const Header = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Toolbar component="nav" variant="dense" className="classes.toolbar">
-        <Link
-          color="inherit"
-          noWrap
-          variant="body2"
-          href="/"
-          className={classes.toolbarLink}
-        >
-          Posts
-        </Link>
-        <Link
-          color="inherit"
-          noWrap
-          variant="body2"
-          href="/news"
-          className={classes.toolbarLink}
-        >
-          External News
-        </Link>
-        <Link
-          color="inherit"
-          noWrap
-          variant="body2"
-          href="/admin"
-          className={classes.toolbarLink}
-        >
-          Admin
-        </Link>
-        <Link
-          color="inherit"
-          noWrap
-          variant="body2"
-          href="/login"
-          className={classes.toolbarLink}
-        >
-          Login
-        </Link>
-        <Link
-          color="inherit"
-          noWrap
-          variant="body2"
-          href="/signup"
-          className={classes.toolbarLink}
-        >
-          Signup
-        </Link>
-      </Toolbar>
-    </div>
+    <AuthConsumer>
+      { ({ authenticated, logout }) => (
+        <div className={classes.root}>
+          <Toolbar component="nav" variant="dense" className="classes.toolbar">
+            <Link
+              color="inherit"
+              noWrap
+              variant="body2"
+              href="/"
+              className={classes.toolbarLink}
+            >
+              Posts
+            </Link>
+            <Link
+              color="inherit"
+              noWrap
+              variant="body2"
+              href="/news"
+              className={classes.toolbarLink}
+            >
+              External News
+            </Link>
+            {
+              authenticated
+                ? (
+                  <>
+                    <Link
+                      color="inherit"
+                      noWrap
+                      variant="body2"
+                      href="/admin"
+                      className={classes.toolbarLink}
+                    >
+                      Admin
+                    </Link>
+                    <Button
+                      className={classes.toolbarLink}
+                      onClick={logout}
+                    >
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      color="inherit"
+                      noWrap
+                      variant="body2"
+                      href="/login"
+                      className={classes.toolbarLink}
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      color="inherit"
+                      noWrap
+                      variant="body2"
+                      href="/signup"
+                      className={classes.toolbarLink}
+                    >
+                      Signup
+                    </Link>
+                  </>
+                )
+            }
+          </Toolbar>
+        </div>
+      )}
+    </AuthConsumer>
   );
 };
 

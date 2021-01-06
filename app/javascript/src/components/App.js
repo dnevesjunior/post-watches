@@ -12,6 +12,9 @@ import Post from './Post/Post';
 import News from './News/News';
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
+import AllPosts from './Crud/AllPosts';
+import EditPost from './Crud/EditPost';
+import CreatePost from './Crud/CreatePost';
 import ProtectedRoute from './Routes/ProtectedRoute';
 
 const App = () => (
@@ -23,6 +26,9 @@ const App = () => (
       <Route exact path="/news" component={News} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route exact path="/admin" component={AllPosts} />
+      <Route exact path="/admin/edit/:slug" component={EditPost} />
+      <Route exact path="/admin/post/new" component={CreatePost} />
       <ProtectedRoute exact path="/admin" component={News} />
     </Switch>
   </AuthProvider>

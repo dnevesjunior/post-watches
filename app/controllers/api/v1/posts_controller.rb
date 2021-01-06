@@ -1,6 +1,6 @@
 module Api
   module V1
-    class PostsController < ApplicationController
+    class PostsController < SessionsController
       before_action :authenticate, only: [:create, :update, :destroy]
 
       def index
