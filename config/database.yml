@@ -8,13 +8,13 @@ default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  host: localhost
 
 development:
   <<: *default
   database: post_watches_development
   user: postgres
   password: password
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,3 +28,5 @@ test:
 production:
   <<: *default
   database: post_watches_production
+  username: post_watches
+  password: <%= ENV['POST_WATCHES_DATABASE_PASSWORD'] %>
