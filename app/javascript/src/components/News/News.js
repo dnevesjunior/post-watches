@@ -20,7 +20,9 @@ const News = () => {
   const apiKey = 'cbd83f17a9e44c17a58e430fa76f6510';
 
   useEffect(() => {
-    axios.get(`https://newsapi.org/v2/everything?apiKey=${apiKey}&q=watches&page=${page}`)
+    axios.get(`https://newsapi.org/v2/everything?apiKey=${apiKey}&q=watches&page=${page}`, {
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    })
       .then((response) => {
         console.log(response);
         setNews(...news, response.data.articles);
