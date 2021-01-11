@@ -65,6 +65,15 @@ const Header = () => {
                     >
                       Admin
                     </Link>
+                    <Link
+                      color="inherit"
+                      noWrap
+                      variant="body2"
+                      href="/admin/post/new"
+                      className={classes.toolbarLink}
+                    >
+                      New Post
+                    </Link>
                     <Button
                       className={classes.toolbarLink}
                       onClick={logout}
